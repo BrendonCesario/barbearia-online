@@ -1,6 +1,6 @@
 // Barbershop business information
 export const BARBERSHOP_INFO = {
-  name: "Barbearia Clássica",
+  name: "King's Cassio Barbearia",
   tagline: "Tradição e Estilo desde 2010",
   address: "Rua XV de Novembro, 1234",
   neighborhood: "Centro",
@@ -9,13 +9,31 @@ export const BARBERSHOP_INFO = {
   zipCode: "80020-310",
   phone: "(41) 99999-8888",
   whatsapp: "5541999998888",
-  email: "contato@barbearia-classica.com.br",
+  email: "contato@kingscassio.com.br",
   workingHours: {
-    weekdays: "Seg - Sex: 09:00 - 19:00",
-    saturday: "Sáb: 09:00 - 17:00",
+    weekdays: "Seg - Sex: 09:00 - 19:00 (Hora Marcada)",
+    saturday: "Sáb: 09:00 - 17:00 (Ordem de Chegada)",
     sunday: "Dom: Fechado",
   },
 };
+
+// Barbers
+export interface Barber {
+  id: string;
+  name: string;
+  photo?: string;
+  specialty?: string;
+  isActive: boolean;
+}
+
+export const BARBERS: Barber[] = [
+  {
+    id: "cassio",
+    name: "Cassio",
+    specialty: "Cortes Clássicos e Degradê",
+    isActive: true,
+  },
+];
 
 // Services offered
 export const SERVICES = [
@@ -79,13 +97,13 @@ export const SERVICES = [
 
 // Business hours configuration
 export const BUSINESS_HOURS = {
-  monday: { open: "09:00", close: "19:00", isOpen: true },
-  tuesday: { open: "09:00", close: "19:00", isOpen: true },
-  wednesday: { open: "09:00", close: "19:00", isOpen: true },
-  thursday: { open: "09:00", close: "19:00", isOpen: true },
-  friday: { open: "09:00", close: "19:00", isOpen: true },
-  saturday: { open: "09:00", close: "17:00", isOpen: true },
-  sunday: { open: "09:00", close: "17:00", isOpen: false },
+  monday: { open: "09:00", close: "19:00", isOpen: true, isAppointmentOnly: true },
+  tuesday: { open: "09:00", close: "19:00", isOpen: true, isAppointmentOnly: true },
+  wednesday: { open: "09:00", close: "19:00", isOpen: true, isAppointmentOnly: true },
+  thursday: { open: "09:00", close: "19:00", isOpen: true, isAppointmentOnly: true },
+  friday: { open: "09:00", close: "19:00", isOpen: true, isAppointmentOnly: true },
+  saturday: { open: "09:00", close: "17:00", isOpen: true, isAppointmentOnly: false }, // Ordem de chegada
+  sunday: { open: "09:00", close: "17:00", isOpen: false, isAppointmentOnly: false },
 };
 
 // Booking rules
@@ -126,4 +144,17 @@ export const isValidBrazilianPhone = (phone: string): boolean => {
 export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
+};
+
+// Check if day is Saturday (walk-in only)
+export const isSaturdayWalkIn = (date: Date): boolean => {
+  return date.getDay() === 6; // Saturday
+};
+
+// Get day type description
+export const getDayTypeDescription = (date: Date): string => {
+  if (date.getDay() === 6) {
+    return "Ordem de Chegada";
+  }
+  return "Hora Marcada";
 };

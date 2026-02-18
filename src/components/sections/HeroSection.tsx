@@ -20,8 +20,8 @@ const HeroSection = () => {
       </div>
 
       {/* Decorative elements */}
-      <div className="absolute top-1/4 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute top-1/4 left-4 md:left-10 w-48 md:w-72 h-48 md:h-72 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-4 md:right-10 w-64 md:w-96 h-64 md:h-96 bg-primary/5 rounded-full blur-3xl" />
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
@@ -68,26 +68,26 @@ const HeroSection = () => {
 
           {/* Stats */}
           <div
-            className="grid grid-cols-3 gap-8 max-w-xl mx-auto mt-16 animate-fade-in"
+            className="grid grid-cols-3 gap-4 sm:gap-8 max-w-xl mx-auto mt-10 sm:mt-16 animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
             <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">
+              <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                 14+
               </p>
-              <p className="text-sm text-muted-foreground mt-1">Anos de Experiência</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Anos de Experiência</p>
             </div>
             <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">
+              <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                 5.0
               </p>
-              <p className="text-sm text-muted-foreground mt-1">Avaliação Google</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Avaliação Google</p>
             </div>
             <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-gradient">
+              <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
                 10K+
               </p>
-              <p className="text-sm text-muted-foreground mt-1">Clientes Atendidos</p>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1">Clientes Atendidos</p>
             </div>
           </div>
         </div>

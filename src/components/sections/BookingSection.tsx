@@ -190,12 +190,12 @@ const BookingSection = () => {
         </div>
 
         {/* Progress Steps */}
-        <div className="max-w-3xl mx-auto mb-12">
+        <div className="max-w-3xl mx-auto mb-8 md:mb-12 px-2">
           <div className="flex items-center justify-between">
             {steps.map((s, i) => (
               <div key={s} className="flex items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-colors ${
+                  className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-semibold text-xs md:text-sm transition-colors ${
                     step === s
                       ? "bg-gold-gradient text-primary-foreground"
                       : steps.indexOf(step) > i
@@ -211,7 +211,7 @@ const BookingSection = () => {
                 </div>
                 {i < steps.length - 1 && (
                   <div
-                    className={`w-10 sm:w-16 h-1 mx-1 sm:mx-2 rounded ${
+                    className={`w-6 sm:w-10 md:w-16 h-0.5 md:h-1 mx-0.5 sm:mx-1 md:mx-2 rounded ${
                       steps.indexOf(step) > i
                         ? "bg-primary/40"
                         : "bg-muted"
@@ -221,9 +221,9 @@ const BookingSection = () => {
               </div>
             ))}
           </div>
-          <div className="flex justify-between mt-2 text-xs text-muted-foreground">
+          <div className="flex justify-between mt-2 text-[10px] sm:text-xs text-muted-foreground">
             {steps.map((s) => (
-              <span key={s} className={step === s ? "text-primary font-medium" : ""}>
+              <span key={s} className={`${step === s ? "text-primary font-medium" : ""} text-center`}>
                 {stepLabels[s]}
               </span>
             ))}
@@ -369,7 +369,7 @@ const BookingSection = () => {
                     Escolha o Horário
                   </h3>
                   {timeSlots.length > 0 ? (
-                    <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-3">
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3">
                       {timeSlots.map((time) => (
                         <button
                           key={time}

@@ -208,7 +208,7 @@ const AdminDashboard = () => {
           {activeTab === "agenda" && (
             <div className="space-y-6">
               {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
                 <div className="bg-card p-4 rounded-xl border border-border/50">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -276,12 +276,12 @@ const AdminDashboard = () => {
                     </Button>
                   </div>
                 </div>
-                <div className="grid grid-cols-7 gap-2">
+                <div className="grid grid-cols-7 gap-1 sm:gap-2">
                   {weekDays.map((day) => (
                     <button
                       key={day.toISOString()}
                       onClick={() => setSelectedDate(day)}
-                      className={`p-3 rounded-lg text-center transition-colors ${
+                      className={`p-1.5 sm:p-3 rounded-lg text-center transition-colors ${
                         isSameDay(day, selectedDate)
                           ? "bg-gold-gradient text-primary-foreground"
                           : isSameDay(day, new Date())
@@ -289,10 +289,10 @@ const AdminDashboard = () => {
                           : "hover:bg-muted text-foreground"
                       }`}
                     >
-                      <p className="text-xs uppercase opacity-70">
+                      <p className="text-[10px] sm:text-xs uppercase opacity-70">
                         {format(day, "EEE", { locale: ptBR })}
                       </p>
-                      <p className="text-lg font-bold">{format(day, "dd")}</p>
+                      <p className="text-sm sm:text-lg font-bold">{format(day, "dd")}</p>
                     </button>
                   ))}
                 </div>
@@ -307,36 +307,36 @@ const AdminDashboard = () => {
                 </div>
                 <div className="divide-y divide-border">
                   {todayAppointments.length > 0 ? (
-                    todayAppointments.map((apt) => (
-                      <div key={apt.id} className="p-4 flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-4">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                            <span className="text-lg font-bold text-primary">
+                     todayAppointments.map((apt) => (
+                      <div key={apt.id} className="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <span className="text-base sm:text-lg font-bold text-primary">
                               {apt.clientName.charAt(0)}
                             </span>
                           </div>
-                          <div>
-                            <p className="font-medium text-foreground">{apt.clientName}</p>
-                            <p className="text-sm text-muted-foreground">
+                          <div className="min-w-0">
+                            <p className="font-medium text-foreground text-sm sm:text-base truncate">{apt.clientName}</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground truncate">
                               {getServiceName(apt.serviceId)}
                             </p>
-                            <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-1 text-xs text-muted-foreground">
                               <span className="flex items-center gap-1">
                                 <Phone className="w-3 h-3" />
                                 {apt.clientPhone}
                               </span>
-                              <span className="flex items-center gap-1">
+                              <span className="hidden sm:flex items-center gap-1">
                                 <Mail className="w-3 h-3" />
                                 {apt.clientEmail}
                               </span>
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-4">
-                          <div className="text-right">
-                            <p className="text-lg font-bold text-primary">{apt.time}</p>
+                        <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 ml-13 sm:ml-0">
+                          <div className="text-left sm:text-right">
+                            <p className="text-base sm:text-lg font-bold text-primary">{apt.time}</p>
                             <span
-                              className={`text-xs px-2 py-1 rounded-full ${
+                              className={`text-xs px-2 py-0.5 sm:py-1 rounded-full ${
                                 apt.status === "confirmed"
                                   ? "bg-success/10 text-success"
                                   : "bg-amber-500/10 text-amber-500"
@@ -345,11 +345,11 @@ const AdminDashboard = () => {
                               {apt.status === "confirmed" ? "Confirmado" : "Pendente"}
                             </span>
                           </div>
-                          <div className="flex gap-2">
-                            <Button variant="ghost" size="icon" className="text-success hover:text-success">
+                          <div className="flex gap-1 sm:gap-2">
+                            <Button variant="ghost" size="icon" className="text-success hover:text-success h-8 w-8 sm:h-10 sm:w-10">
                               <Check className="w-4 h-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive">
+                            <Button variant="ghost" size="icon" className="text-destructive hover:text-destructive h-8 w-8 sm:h-10 sm:w-10">
                               <XCircle className="w-4 h-4" />
                             </Button>
                           </div>

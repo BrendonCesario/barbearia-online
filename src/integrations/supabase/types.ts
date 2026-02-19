@@ -177,6 +177,7 @@ export type Database = {
           email: string | null
           id: string
           is_active: boolean
+          is_plan_active: boolean
           logo_url: string | null
           name: string
           phone: string | null
@@ -197,6 +198,7 @@ export type Database = {
           email?: string | null
           id?: string
           is_active?: boolean
+          is_plan_active?: boolean
           logo_url?: string | null
           name: string
           phone?: string | null
@@ -217,6 +219,7 @@ export type Database = {
           email?: string | null
           id?: string
           is_active?: boolean
+          is_plan_active?: boolean
           logo_url?: string | null
           name?: string
           phone?: string | null
@@ -440,7 +443,7 @@ export type Database = {
         | "cancelled"
         | "completed"
         | "no_show"
-      plan_type: "basic" | "premium"
+      plan_type: "basic" | "premium" | "intermediario"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -576,7 +579,7 @@ export const Constants = {
         "completed",
         "no_show",
       ],
-      plan_type: ["basic", "premium"],
+      plan_type: ["basic", "premium", "intermediario"],
     },
   },
 } as const
